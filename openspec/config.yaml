@@ -4,7 +4,8 @@ context: |
   Project: msvc-evaluacion-t1 — sistema de gestión comercial (48h technical challenge)
   Stack: Next.js 16 (App Router, proxy.ts middleware), TypeScript, Supabase (Postgres + Auth + RLS), Tailwind CSS, shadcn/ui
   Forms: react-hook-form + zod | Server state: TanStack Query / Next.js Server Actions
-  Deploy: Vercel | Commits: conventional | Code/UI language: English
+  Deploy: Vercel | Commits: conventional
+  Language: code/identifiers/comments in English; ALL user-facing UI copy in Spanish (neutral Peruvian, no voseo)
   Modules (priority): 1-Login 2-Productos 3-OrdenCompra 4-IngresoMercadería 5-Facturación* 6-Despacho*
   (* stretch goals for 48h window)
 
