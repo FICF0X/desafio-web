@@ -1,0 +1,6 @@
+-- ============================================================
+-- Migration: 0000_init
+-- Description: Initial placeholder — tables will be defined in
+--              subsequent migrations as each module is built.
+-- Apply via: Supabase SQL editor or `supabase db push`
+-- ============================================================

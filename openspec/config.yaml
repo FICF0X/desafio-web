@@ -1,0 +1,45 @@
+schema: spec-driven
+
+context: |
+  Project: msvc-evaluacion-t1 — sistema de gestión comercial (48h technical challenge)
+  Stack: Next.js 16 (App Router, proxy.ts middleware), TypeScript, Supabase (Postgres + Auth + RLS), Tailwind CSS, shadcn/ui
+  Forms: react-hook-form + zod | Server state: TanStack Query / Next.js Server Actions
+  Deploy: Vercel | Commits: conventional | Code/UI language: English
+  Modules (priority): 1-Login 2-Productos 3-OrdenCompra 4-IngresoMercadería 5-Facturación* 6-Despacho*
+  (* stretch goals for 48h window)
+
+testing:
+  strict_tdd: false
+  reason: "Greenfield — no test runner scaffolded yet. Activate after adding Vitest."
+  planned_runner: "Vitest + React Testing Library + Playwright"
+  layers:
+    unit: false
+    integration: false
+    e2e: false
+
+rules:
+  proposal:
+    - Include rollback plan for risky changes
+    - Keep scope aligned with 48h delivery window
+  specs:
+    - Use Given/When/Then for scenarios
+    - Use RFC 2119 keywords (MUST, SHALL, SHOULD, MAY)
+    - Reference Supabase RLS policies for auth-gated operations
+  design:
+    - Include sequence diagrams for complex flows (OC, Ingreso, Facturación)
+    - Document architecture decisions with rationale
+    - Prefer Server Actions for mutations; TanStack Query for reads
+  tasks:
+    - Group by phase, use hierarchical numbering
+    - Keep tasks completable in one session
+    - Flag tasks that require Supabase schema changes
+  apply:
+    - Follow existing code patterns
+    tdd: false
+    test_command: ""
+  verify:
+    test_command: ""
+    build_command: "npm run build"
+    coverage_threshold: 0
+  archive:
+    - Warn before merging destructive deltas
