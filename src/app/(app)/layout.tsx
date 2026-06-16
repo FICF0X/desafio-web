@@ -82,6 +82,12 @@ export default async function AppLayout({
             >
               Facturación
             </Link>
+            <Link
+              href="/dispatches"
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Despacho
+            </Link>
           </nav>
           <div className="flex items-center gap-4">
             <span className="text-xs text-muted-foreground">{user.email}</span>

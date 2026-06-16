@@ -8,40 +8,43 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 
-const modules = [
+type ModuleStatus = 'done' | 'soon'
+
+const modules: Array<{ name: string; description: string; status: ModuleStatus; href?: string }> = [
   {
     name: 'Inicio de sesión',
     description: 'Autenticación y gestión de sesión',
-    status: 'done' as const,
+    status: 'done',
   },
   {
     name: 'Productos',
     description: 'Gestión del catálogo de productos',
-    status: 'done' as const,
+    status: 'done',
     href: '/products',
   },
   {
     name: 'Orden de Compra',
     description: 'Creación y seguimiento de órdenes de compra',
-    status: 'done' as const,
+    status: 'done',
     href: '/purchase-orders',
   },
   {
     name: 'Ingreso de Mercadería',
     description: 'Recepción de mercadería e ingreso a inventario',
-    status: 'done' as const,
+    status: 'done',
     href: '/goods-receipts',
   },
   {
     name: 'Facturación',
     description: 'Facturación y cobranza',
-    status: 'done' as const,
+    status: 'done',
     href: '/invoices',
   },
   {
     name: 'Despacho',
     description: 'Gestión de despachos y envíos',
-    status: 'soon' as const,
+    status: 'done',
+    href: '/dispatches',
   },
 ]
 
@@ -89,7 +92,7 @@ export default async function DashboardPage() {
               </Card>
             )
 
-            return 'href' in mod && mod.href ? (
+            return mod.href ? (
               <Link key={mod.name} href={mod.href} className="block">
                 {card}
               </Link>

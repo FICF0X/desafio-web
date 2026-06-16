@@ -26,11 +26,18 @@ export default async function InvoicePage({ params }: InvoicePageProps) {
             <h1 className="text-3xl font-bold tracking-tight">Detalle de Factura</h1>
             <p className="mt-1 font-mono text-sm text-muted-foreground">{invoice.code}</p>
           </div>
-          <Link href="/invoices">
-            <Button variant="outline" size="sm">
-              Volver al listado
-            </Button>
-          </Link>
+          <div className="flex items-center gap-2">
+            {invoice.status === 'issued' && (
+              <Link href={`/dispatches/new?invoice=${id}`}>
+                <Button size="sm">Registrar despacho</Button>
+              </Link>
+            )}
+            <Link href="/invoices">
+              <Button variant="outline" size="sm">
+                Volver al listado
+              </Button>
+            </Link>
+          </div>
         </div>
 
         <InvoiceDetail invoice={invoice} />
