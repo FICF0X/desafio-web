@@ -128,3 +128,42 @@
     @apply font-sans;
   }
 }
+
+/* Login page glass card overrides — scoped so they don't affect other pages */
+@layer utilities {
+  .login-glass-card [data-slot="card"] {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    color: oklch(0.95 0 0) !important;
+    ring-color: transparent !important;
+  }
+
+  .login-glass-card [data-slot="card-title"] {
+    color: oklch(0.97 0 0) !important;
+  }
+
+  .login-glass-card [data-slot="card-description"] {
+    color: oklch(0.72 0 0) !important;
+  }
+
+  .login-glass-card label {
+    color: oklch(0.9 0 0) !important;
+  }
+
+  .login-glass-card input {
+    background: oklch(1 0 0 / 8%) !important;
+    border-color: oklch(1 0 0 / 15%) !important;
+    color: oklch(0.97 0 0) !important;
+  }
+
+  .login-glass-card input::placeholder {
+    color: oklch(1 0 0 / 35%) !important;
+  }
+
+  .login-glass-card input:focus-visible {
+    border-color: oklch(1 0 0 / 30%) !important;
+    box-shadow: 0 0 0 2px oklch(1 0 0 / 10%) !important;
+    outline: none !important;
+  }
+}
