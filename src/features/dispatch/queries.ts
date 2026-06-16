@@ -59,13 +59,18 @@ export async function getDispatch(id: string): Promise<DispatchDetail | null> {
   return data as unknown as DispatchDetail
 }
 
-/** Raw shape returned by Supabase for the issued-invoices query. */
+/**
+ * Raw shape returned by Supabase for the issued-invoices query.
+ * NOTE: because dispatches.invoice_id is UNIQUE, PostgREST treats the
+ * dispatches embed as a one-to-one relationship and returns a single object
+ * (or null) rather than an array — so we must handle all three shapes.
+ */
 type RawIssuedInvoice = {
   id: string
   code: string
   total: number
-  customers: { name: string }
-  dispatches: Array<{ id: string }>
+  customers: { name: string } | { name: string }[] | null
+  dispatches: { id: string } | { id: string }[] | null
 }
 
 /**
@@ -97,13 +102,24 @@ export async function listDispatchableInvoices(): Promise<
 
   const rows = (data ?? []) as unknown as RawIssuedInvoice[]
 
+  // A dispatch is "absent" when the embed is null or an empty array.
+  const hasNoDispatch = (d: RawIssuedInvoice['dispatches']): boolean =>
+    d == null || (Array.isArray(d) && d.length === 0)
+
+  // customers may come back as an object (to-one) or array depending on
+  // how PostgREST resolves the relationship.
+  const customerName = (c: RawIssuedInvoice['customers']): string => {
+    if (c == null) return ''
+    return Array.isArray(c) ? (c[0]?.name ?? '') : c.name
+  }
+
   // Keep only invoices that have no dispatch yet
   return rows
-    .filter((inv) => inv.dispatches.length === 0)
+    .filter((inv) => hasNoDispatch(inv.dispatches))
     .map((inv) => ({
       id: inv.id,
       code: inv.code,
-      customer_name: inv.customers.name,
+      customer_name: customerName(inv.customers),
       total: inv.total,
     }))
 }
