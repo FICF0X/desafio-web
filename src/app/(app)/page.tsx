@@ -23,7 +23,8 @@ const modules = [
   {
     name: 'Orden de Compra',
     description: 'Creación y seguimiento de órdenes de compra',
-    status: 'soon' as const,
+    status: 'done' as const,
+    href: '/purchase-orders',
   },
   {
     name: 'Ingreso de Mercadería',
