@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blade of the Condemned</title>
+    <script type="module" crossorigin src="./assets/index-CsHEKg_B.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-Dj34O7vl.css">
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <div id="ui-root">
+      <div id="crosshair" class="hidden">+</div>
+
+      <!-- In-game HUD -->
+      <div id="hud" class="hidden">
+        <div id="hud-bars">
+          <div class="bar">
+            <span class="bar-label">HEALTH</span>
+            <div class="bar-track"><div id="health-fill" class="bar-fill health"></div></div>
+          </div>
+          <div class="bar">
+            <span class="bar-label">STAMINA</span>
+            <div class="bar-track"><div id="stamina-fill" class="bar-fill stamina"></div></div>
+          </div>
+        </div>
+        <div id="hud-wave">
+          <div class="wave-line"><span class="wave-label">WAVE</span><span id="wave-num">1</span></div>
+          <div id="enemies-left">ENEMIES: 0</div>
+          <div id="combo-display" class="hidden">x2</div>
+        </div>
+        <div id="block-indicator" class="hidden">BLOCKING</div>
+        <div id="parry-flash" class="hidden">PARRY!</div>
+      </div>
+
+      <div id="toast" class="hidden"></div>
+      <div id="vignette"></div>
+
+      <!-- Main menu -->
+      <div id="menu" class="screen">
+        <h1 class="title">BLADE OF<br />THE CONDEMNED</h1>
+        <p class="subtitle">
+          They dragged you into the pit to die. Give them a fight. Cut down every
+          wave, parry the lunge, and dodge what you can't block — for as long as
+          you can stay standing.
+        </p>
+        <button id="btn-start" class="btn">ENTER THE PIT</button>
+        <div class="controls-help">
+          <h3>CONTROLS</h3>
+          <ul>
+            <li><b>W A S D</b> — Move</li>
+            <li><b>Mouse</b> — Look</li>
+            <li><b>Left Click</b> — Slash (chain for combos)</li>
+            <li><b>Right Click</b> — Block / Parry (time it!)</li>
+            <li><b>Space / Shift</b> — Dodge roll (i-frames)</li>
+            <li><b>Esc</b> — Pause</li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="pause" class="screen hidden">
+        <h1 class="title">PAUSED</h1>
+        <button id="btn-resume" class="btn">RESUME</button>
+        <button id="btn-restart-pause" class="btn btn-secondary">RESTART</button>
+      </div>
+
+      <div id="gameover" class="screen hidden">
+        <h1 class="title danger">YOU FELL</h1>
+        <p class="subtitle" id="gameover-msg"></p>
+        <button id="btn-restart" class="btn">FIGHT AGAIN</button>
+      </div>
+
+      <div id="loading" class="screen">
+        <h1 class="title">BLADE OF<br />THE CONDEMNED</h1>
+        <p class="subtitle">Loading…</p>
+      </div>
+    </div>
+
+  </body>
+</html>

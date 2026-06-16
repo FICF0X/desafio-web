@@ -22,6 +22,7 @@ import {
   TableRow,
 } from '@/components/ui/table'
 import { getDashboardMetrics, getRecentInvoices } from '@/features/dashboard/queries'
+import { GameWidget } from '@/features/dashboard/components/GameWidget'
 
 const formatPEN = (n: number) =>
   new Intl.NumberFormat('es-PE', { style: 'currency', currency: 'PEN' }).format(n)
@@ -265,6 +266,24 @@ export default async function DashboardPage() {
               </Table>
             </CardContent>
           </Card>
+        </div>
+        {/* Games section */}
+        <div>
+          <h2 className="mb-4 text-lg font-semibold">Mis proyectos</h2>
+          <div className="grid gap-4 md:grid-cols-2">
+            <GameWidget
+              title="The Last Shift"
+              description="Juego de terror y disparos en 3D"
+              src="/games/horror-game/index.html"
+              iconName="ghost"
+            />
+            <GameWidget
+              title="Blade of the Condemned"
+              description="Hack and slash en primera persona"
+              src="/games/hack-and-slash/index.html"
+              iconName="swords"
+            />
+          </div>
         </div>
       </div>
     </div>

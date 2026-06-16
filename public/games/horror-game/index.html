@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Last Shift</title>
+    <script type="module" crossorigin src="./assets/index-CzUlR9Lj.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-C9FiI8d5.css">
+  </head>
+  <body>
+    <!-- The WebGL canvas is injected here by the renderer. -->
+    <div id="app"></div>
+
+    <!-- All UI lives as DOM overlays on top of the canvas. The UI module
+         (src/ui/UI.js) owns showing/hiding these screens. -->
+    <div id="ui-root">
+      <!-- Crosshair / interaction reticle -->
+      <div id="crosshair" class="hidden">+</div>
+
+      <!-- In-game heads-up display -->
+      <div id="hud" class="hidden">
+        <div id="hud-objective">
+          <span class="label">FUSES</span>
+          <span id="fuse-count">0 / 6</span>
+          <span id="notes-count" class="sub-count">NOTES 0 / 5</span>
+        </div>
+        <div id="hud-lives">
+          <span class="label">LIVES</span>
+          <span id="lives-hearts">♥ ♥ ♥</span>
+        </div>
+        <div id="hud-bars">
+          <div class="bar">
+            <span class="bar-label">STAMINA</span>
+            <div class="bar-track"><div id="stamina-fill" class="bar-fill"></div></div>
+          </div>
+          <div class="bar">
+            <span class="bar-label">SANITY</span>
+            <div class="bar-track"><div id="sanity-fill" class="bar-fill sanity"></div></div>
+          </div>
+        </div>
+        <div id="hud-flashlight">
+          <span id="flashlight-state">FLASHLIGHT: ON</span>
+        </div>
+        <div id="threat-indicator" class="hidden">⚠ IT KNOWS WHERE YOU ARE</div>
+        <div id="fuse-guide" class="hidden"></div>
+      </div>
+
+      <!-- Big zone-entry title -->
+      <div id="zone-title" class="hidden"></div>
+
+      <!-- Runner-mode HUD -->
+      <div id="runner-hud" class="hidden">
+        <div id="r-top">
+          <div class="r-stat"><span class="r-label">DISTANCE</span><span id="r-distance">0m</span></div>
+          <div class="r-stat"><span class="r-label">KILLS</span><span id="r-kills">0</span></div>
+          <div class="r-stat"><span class="r-label">COMBO</span><span id="r-combo">0</span></div>
+        </div>
+        <div id="r-health-wrap">
+          <span class="r-label">HEALTH</span>
+          <div class="r-health-track"><div id="r-health-fill"></div></div>
+        </div>
+        <div id="r-danger" class="hidden">⚠ IT'S RIGHT BEHIND YOU</div>
+      </div>
+
+      <!-- Contextual prompt (e.g. "Press E to pick up fuse") -->
+      <div id="prompt" class="hidden"></div>
+
+      <!-- Transient message toasts -->
+      <div id="toast" class="hidden"></div>
+
+      <!-- Collectible note / journal entry -->
+      <div id="note-panel" class="hidden">
+        <div class="note-paper">
+          <h3 id="note-title">NOTE</h3>
+          <p id="note-body"></p>
+          <span class="note-dismiss">[E] / click to close</span>
+        </div>
+      </div>
+
+      <!-- Damage / detection vignette -->
+      <div id="vignette" class="hidden"></div>
+
+      <!-- Main menu -->
+      <div id="menu" class="screen">
+        <h1 class="title">THE RUN</h1>
+        <p class="subtitle">
+          It broke loose and it's right behind you. Don't stop running. Dodge
+          what's in your way, gun down what gets in front of you, and put as much
+          distance between you and <b>The Mutant</b> as you can — because the
+          second you trip, it's on you.
+        </p>
+        <button id="btn-start" class="btn">RUN</button>
+        <div class="controls-help">
+          <h3>CONTROLS</h3>
+          <ul>
+            <li><b>A / D</b> — Strafe (dodge)</li>
+            <li><b>Space</b> — Jump (over low barriers)</li>
+            <li><b>Mouse</b> — Aim</li>
+            <li><b>Left Click</b> — Shoot (hold to fire)</li>
+            <li><b>Esc</b> — Pause</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Pause menu -->
+      <div id="pause" class="screen hidden">
+        <h1 class="title">PAUSED</h1>
+        <button id="btn-resume" class="btn">RESUME</button>
+        <button id="btn-restart-pause" class="btn btn-secondary">RESTART</button>
+      </div>
+
+      <!-- Game over (lost) -->
+      <div id="gameover" class="screen hidden">
+        <h1 class="title danger">YOU DIED</h1>
+        <p class="subtitle" id="gameover-msg">It found you in the dark.</p>
+        <button id="btn-restart" class="btn">TRY AGAIN</button>
+      </div>
+
+      <!-- Victory -->
+      <div id="victory" class="screen hidden">
+        <h1 class="title win">YOU ESCAPED</h1>
+        <p class="subtitle">Dawn breaks. You survived the last shift.</p>
+        <p class="subtitle small" id="victory-stats"></p>
+        <button id="btn-play-again" class="btn">PLAY AGAIN</button>
+      </div>
+
+      <!-- Loading -->
+      <div id="loading" class="screen">
+        <h1 class="title">THE LAST SHIFT</h1>
+        <p class="subtitle">Loading…</p>
+      </div>
+    </div>
+
+  </body>
+</html>
