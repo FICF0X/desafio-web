@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import { createClient } from '@/lib/supabase/server'
 import {
   Card,
@@ -15,7 +17,8 @@ const modules = [
   {
     name: 'Productos',
     description: 'Product catalog management',
-    status: 'soon' as const,
+    status: 'done' as const,
+    href: '/products',
   },
   {
     name: 'Orden de Compra',
@@ -55,28 +58,42 @@ export default async function DashboardPage() {
           </p>
         </div>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {modules.map((mod) => (
-            <Card
-              key={mod.name}
-              className={mod.status === 'soon' ? 'opacity-60' : undefined}
-            >
-              <CardHeader>
-                <div className="flex items-center justify-between">
-                  <CardTitle className="text-base">{mod.name}</CardTitle>
-                  {mod.status === 'done' ? (
-                    <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-medium text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400">
-                      Done
-                    </span>
-                  ) : (
-                    <span className="rounded-full bg-muted px-2 py-0.5 text-xs font-medium text-muted-foreground">
-                      Coming soon
-                    </span>
-                  )}
-                </div>
-                <CardDescription>{mod.description}</CardDescription>
-              </CardHeader>
-            </Card>
-          ))}
+          {modules.map((mod) => {
+            const card = (
+              <Card
+                key={mod.name}
+                className={
+                  mod.status === 'soon'
+                    ? 'opacity-60'
+                    : 'cursor-pointer transition-shadow hover:shadow-md'
+                }
+              >
+                <CardHeader>
+                  <div className="flex items-center justify-between">
+                    <CardTitle className="text-base">{mod.name}</CardTitle>
+                    {mod.status === 'done' ? (
+                      <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-medium text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400">
+                        Done
+                      </span>
+                    ) : (
+                      <span className="rounded-full bg-muted px-2 py-0.5 text-xs font-medium text-muted-foreground">
+                        Coming soon
+                      </span>
+                    )}
+                  </div>
+                  <CardDescription>{mod.description}</CardDescription>
+                </CardHeader>
+              </Card>
+            )
+
+            return 'href' in mod && mod.href ? (
+              <Link key={mod.name} href={mod.href} className="block">
+                {card}
+              </Link>
+            ) : (
+              <div key={mod.name}>{card}</div>
+            )
+          })}
         </div>
       </div>
     </main>

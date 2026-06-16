@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { redirect } from 'next/navigation'
 
 import { createClient } from '@/lib/supabase/server'
@@ -35,6 +36,14 @@ export default async function AppLayout({
           <span className="text-sm font-medium text-foreground">
             Desafío Web
           </span>
+          <nav className="flex items-center gap-4">
+            <Link
+              href="/products"
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Products
+            </Link>
+          </nav>
           <div className="flex items-center gap-4">
             <span className="text-xs text-muted-foreground">{user.email}</span>
             <form action={logout}>
