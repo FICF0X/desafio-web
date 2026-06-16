@@ -24,6 +24,12 @@ const Medusae = dynamic<MedusaeProps>(
 
 const MEDUSAE_CONFIG = {
   background: { color: '#0a0a14' },
+  // Smaller, tighter jellyfish halo so the animation reads better.
+  halo: {
+    radiusBase: 1.5,
+    radiusAmplitude: 0.35,
+    rimWidth: 1.3,
+  },
   particles: {
     // colorBase is the resting color (away from the cursor). It must be
     // clearly brighter than the background or the field is invisible.
