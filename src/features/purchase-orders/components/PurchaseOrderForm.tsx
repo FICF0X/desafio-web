@@ -187,6 +187,9 @@ export function PurchaseOrderForm({ suppliers, products }: PurchaseOrderFormProp
                   <tbody className="divide-y">
                     {fields.map((field, index) => {
                       const currentProductId = watchedItems[index]?.product_id
+                      const selectedProduct = products.find(
+                        (p) => p.id === currentProductId,
+                      )
                       const subtotal = computeSubtotal(index)
                       const itemErrors = Array.isArray(errors.items)
                         ? errors.items[index]
@@ -221,6 +224,12 @@ export function PurchaseOrderForm({ suppliers, products }: PurchaseOrderFormProp
                             {itemErrors?.product_id && (
                               <p className="mt-0.5 text-xs text-destructive" role="alert">
                                 {itemErrors.product_id.message}
+                              </p>
+                            )}
+                            {selectedProduct && (
+                              <p className="mt-1 text-xs text-muted-foreground">
+                                Precio de venta ref.:{' '}
+                                {formatCurrency(Number(selectedProduct.unit_price))}
                               </p>
                             )}
                           </td>
