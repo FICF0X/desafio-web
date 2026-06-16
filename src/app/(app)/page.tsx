@@ -29,7 +29,8 @@ const modules = [
   {
     name: 'Ingreso de Mercadería',
     description: 'Recepción de mercadería e ingreso a inventario',
-    status: 'soon' as const,
+    status: 'done' as const,
+    href: '/goods-receipts',
   },
   {
     name: 'Facturación',

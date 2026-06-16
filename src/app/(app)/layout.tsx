@@ -64,6 +64,12 @@ export default async function AppLayout({
             >
               Órdenes de Compra
             </Link>
+            <Link
+              href="/goods-receipts"
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Ingreso de Mercadería
+            </Link>
           </nav>
           <div className="flex items-center gap-4">
             <span className="text-xs text-muted-foreground">{user.email}</span>

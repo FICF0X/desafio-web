@@ -3,6 +3,7 @@
 import { useTransition } from 'react'
 import { toast } from 'sonner'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -104,7 +105,12 @@ export function PurchaseOrderDetail({ po }: PurchaseOrderDetailProps) {
           </dl>
 
           {po.status === 'pending' && (
-            <div className="mt-6 border-t pt-4">
+            <div className="mt-6 border-t pt-4 flex items-center gap-3">
+              <Link href={`/goods-receipts/new?po=${po.id}`}>
+                <Button variant="default" size="sm">
+                  Recibir mercadería
+                </Button>
+              </Link>
               <Button
                 variant="destructive"
                 size="sm"
