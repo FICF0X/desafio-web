@@ -7,9 +7,9 @@ import { loginSchema, type LoginInput } from './schema'
 
 // Safe, non-leaky message for any auth failure.
 // Must not reveal whether the email exists in the system.
-const GENERIC_AUTH_ERROR = 'Invalid email or password. Please try again.'
+const GENERIC_AUTH_ERROR = 'Correo o contraseña inválidos. Inténtalo de nuevo.'
 const GENERIC_SERVER_ERROR =
-  'Something went wrong. Please try again in a moment.'
+  'Ocurrió un error. Inténtalo de nuevo en un momento.'
 
 export type LoginResult = { ok: false; error: string }
 

@@ -41,14 +41,14 @@ export default async function AppLayout({
               href="/products"
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
-              Products
+              Productos
             </Link>
           </nav>
           <div className="flex items-center gap-4">
             <span className="text-xs text-muted-foreground">{user.email}</span>
             <form action={logout}>
               <Button type="submit" variant="ghost" size="sm">
-                Sign out
+                Cerrar sesión
               </Button>
             </form>
           </div>

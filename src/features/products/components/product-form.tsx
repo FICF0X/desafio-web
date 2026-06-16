@@ -73,15 +73,15 @@ export function ProductForm({ mode, productId, initialValues }: ProductFormProps
     }
 
     const successMessage =
-      mode === 'create' ? 'Product created successfully.' : 'Product updated successfully.'
+      mode === 'create' ? 'Producto creado correctamente.' : 'Producto actualizado correctamente.'
     toast.success(successMessage)
 
     // Success — navigate to product list
     router.push('/products')
   }
 
-  const title = mode === 'create' ? 'New Product' : 'Edit Product'
-  const submitLabel = mode === 'create' ? 'Create product' : 'Save changes'
+  const title = mode === 'create' ? 'Nuevo producto' : 'Editar producto'
+  const submitLabel = mode === 'create' ? 'Crear producto' : 'Guardar cambios'
 
   return (
     <Card className="mx-auto w-full max-w-2xl">
@@ -95,7 +95,7 @@ export function ProductForm({ mode, productId, initialValues }: ProductFormProps
             <Label htmlFor="sku">SKU</Label>
             <Input
               id="sku"
-              placeholder="e.g. PROD-001"
+              placeholder="ej. PROD-001"
               aria-invalid={errors.sku ? true : undefined}
               disabled={isSubmitting}
               {...register('sku')}
@@ -109,10 +109,10 @@ export function ProductForm({ mode, productId, initialValues }: ProductFormProps
 
           {/* Name */}
           <div className="space-y-1.5">
-            <Label htmlFor="name">Name</Label>
+            <Label htmlFor="name">Nombre</Label>
             <Input
               id="name"
-              placeholder="Product name"
+              placeholder="Nombre del producto"
               aria-invalid={errors.name ? true : undefined}
               disabled={isSubmitting}
               {...register('name')}
@@ -126,10 +126,10 @@ export function ProductForm({ mode, productId, initialValues }: ProductFormProps
 
           {/* Description */}
           <div className="space-y-1.5">
-            <Label htmlFor="description">Description (optional)</Label>
+            <Label htmlFor="description">Descripción (opcional)</Label>
             <Input
               id="description"
-              placeholder="Short description"
+              placeholder="Descripción breve"
               disabled={isSubmitting}
               {...register('description')}
             />
@@ -137,7 +137,7 @@ export function ProductForm({ mode, productId, initialValues }: ProductFormProps
 
           {/* Unit Price */}
           <div className="space-y-1.5">
-            <Label htmlFor="unit_price">Unit Price</Label>
+            <Label htmlFor="unit_price">Precio unitario</Label>
             <Input
               id="unit_price"
               type="number"
@@ -157,7 +157,7 @@ export function ProductForm({ mode, productId, initialValues }: ProductFormProps
 
           {/* Stock Quantity */}
           <div className="space-y-1.5">
-            <Label htmlFor="stock_quantity">Stock Quantity</Label>
+            <Label htmlFor="stock_quantity">Cantidad en stock</Label>
             <Input
               id="stock_quantity"
               type="number"
@@ -177,10 +177,10 @@ export function ProductForm({ mode, productId, initialValues }: ProductFormProps
 
           {/* Unit of Measure */}
           <div className="space-y-1.5">
-            <Label htmlFor="unit_of_measure">Unit of Measure (optional)</Label>
+            <Label htmlFor="unit_of_measure">Unidad de medida (opcional)</Label>
             <Input
               id="unit_of_measure"
-              placeholder="e.g. kg, pcs, liters"
+              placeholder="ej. kg, unid., litros"
               disabled={isSubmitting}
               {...register('unit_of_measure')}
             />
@@ -188,10 +188,10 @@ export function ProductForm({ mode, productId, initialValues }: ProductFormProps
 
           {/* Category */}
           <div className="space-y-1.5">
-            <Label htmlFor="category">Category (optional)</Label>
+            <Label htmlFor="category">Categoría (opcional)</Label>
             <Input
               id="category"
-              placeholder="e.g. Electronics"
+              placeholder="ej. Electrónica"
               disabled={isSubmitting}
               {...register('category')}
             />
@@ -202,7 +202,7 @@ export function ProductForm({ mode, productId, initialValues }: ProductFormProps
               type="submit"
               disabled={isSubmitting || !isValid}
             >
-              {isSubmitting ? 'Saving…' : submitLabel}
+              {isSubmitting ? 'Guardando…' : submitLabel}
             </Button>
             <Button
               type="button"
@@ -210,7 +210,7 @@ export function ProductForm({ mode, productId, initialValues }: ProductFormProps
               disabled={isSubmitting}
               onClick={() => router.push('/products')}
             >
-              Cancel
+              Cancelar
             </Button>
           </div>
         </form>

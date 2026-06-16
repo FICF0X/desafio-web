@@ -18,8 +18,8 @@ const numericPrice = z
   })
   .pipe(
     z
-      .number({ message: 'Unit price is required.' })
-      .nonnegative({ message: 'Price must be 0 or greater.' }),
+      .number({ message: 'El precio unitario es obligatorio.' })
+      .nonnegative({ message: 'El precio no puede ser negativo.' }),
   )
 
 const numericQty = z
@@ -31,20 +31,20 @@ const numericQty = z
   })
   .pipe(
     z
-      .number({ message: 'Stock quantity must be a number.' })
-      .int({ message: 'Stock quantity must be a whole number.' })
-      .nonnegative({ message: 'Stock quantity cannot be negative.' }),
+      .number({ message: 'La cantidad en stock debe ser un número.' })
+      .int({ message: 'La cantidad en stock debe ser un número entero.' })
+      .nonnegative({ message: 'La cantidad en stock no puede ser negativa.' }),
   )
 
 export const productSchema = z.object({
   sku: z
     .string()
-    .min(1, { message: 'SKU is required.' })
-    .max(64, { message: 'SKU must be 64 characters or fewer.' }),
+    .min(1, { message: 'El SKU es obligatorio.' })
+    .max(64, { message: 'El SKU no puede superar los 64 caracteres.' }),
   name: z
     .string()
-    .min(1, { message: 'Name is required.' })
-    .max(200, { message: 'Name must be 200 characters or fewer.' }),
+    .min(1, { message: 'El nombre es obligatorio.' })
+    .max(200, { message: 'El nombre no puede superar los 200 caracteres.' }),
   unit_price: numericPrice,
   stock_quantity: numericQty.optional().default(0),
   description: z.string().optional(),

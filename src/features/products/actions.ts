@@ -23,7 +23,7 @@ export async function createProduct(input: ProductInput): Promise<ActionResult> 
   const parsed = productSchema.safeParse(input)
   if (!parsed.success) {
     const first = parsed.error.issues[0]
-    return { ok: false, error: first?.message ?? 'Invalid input.' }
+    return { ok: false, error: first?.message ?? 'Datos inválidos.' }
   }
 
   const supabase = await createClient()
@@ -38,12 +38,12 @@ export async function createProduct(input: ProductInput): Promise<ActionResult> 
     if (error.code === PG_UNIQUE_VIOLATION) {
       return {
         ok: false,
-        error: 'A product with this SKU already exists.',
+        error: 'Ya existe un producto con este SKU.',
         field: 'sku',
       }
     }
     console.error('[products] createProduct error:', error.message, error.code)
-    return { ok: false, error: 'Something went wrong. Please try again.' }
+    return { ok: false, error: 'Ocurrió un error. Inténtalo de nuevo.' }
   }
 
   revalidatePath('/products')
@@ -63,7 +63,7 @@ export async function updateProduct(
   const parsed = productSchema.safeParse(input)
   if (!parsed.success) {
     const first = parsed.error.issues[0]
-    return { ok: false, error: first?.message ?? 'Invalid input.' }
+    return { ok: false, error: first?.message ?? 'Datos inválidos.' }
   }
 
   const supabase = await createClient()
@@ -79,12 +79,12 @@ export async function updateProduct(
     if (error.code === PG_UNIQUE_VIOLATION) {
       return {
         ok: false,
-        error: 'A product with this SKU already exists.',
+        error: 'Ya existe un producto con este SKU.',
         field: 'sku',
       }
     }
     console.error('[products] updateProduct error:', error.message, error.code)
-    return { ok: false, error: 'Something went wrong. Please try again.' }
+    return { ok: false, error: 'Ocurrió un error. Inténtalo de nuevo.' }
   }
 
   revalidatePath('/products')
@@ -116,7 +116,7 @@ export async function toggleProductActive(
       error.message,
       error.code,
     )
-    return { ok: false, error: 'Something went wrong. Please try again.' }
+    return { ok: false, error: 'Ocurrió un error. Inténtalo de nuevo.' }
   }
 
   revalidatePath('/products')

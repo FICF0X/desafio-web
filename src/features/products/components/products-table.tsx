@@ -40,11 +40,11 @@ export function ProductsTable({ rows }: ProductsTableProps) {
       <TableHeader>
         <TableRow>
           <TableHead>SKU</TableHead>
-          <TableHead>Name</TableHead>
-          <TableHead>Unit Price</TableHead>
+          <TableHead>Nombre</TableHead>
+          <TableHead>Precio unitario</TableHead>
           <TableHead>Stock</TableHead>
-          <TableHead>Status</TableHead>
-          <TableHead>Actions</TableHead>
+          <TableHead>Estado</TableHead>
+          <TableHead>Acciones</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -54,7 +54,7 @@ export function ProductsTable({ rows }: ProductsTableProps) {
               colSpan={6}
               className="py-10 text-center text-muted-foreground"
             >
-              No products found.
+              No se encontraron productos.
             </TableCell>
           </TableRow>
         ) : (
@@ -72,14 +72,14 @@ export function ProductsTable({ rows }: ProductsTableProps) {
                       : 'rounded-full bg-muted px-2 py-0.5 text-xs font-medium text-muted-foreground'
                   }
                 >
-                  {product.is_active ? 'Active' : 'Inactive'}
+                  {product.is_active ? 'Activo' : 'Inactivo'}
                 </span>
               </TableCell>
               <TableCell>
                 <div className="flex items-center gap-2">
                   <Link href={`/products/${product.id}/edit`}>
                     <Button size="sm" variant="outline">
-                      Edit
+                      Editar
                     </Button>
                   </Link>
                   <Button
@@ -87,7 +87,7 @@ export function ProductsTable({ rows }: ProductsTableProps) {
                     variant={product.is_active ? 'destructive' : 'secondary'}
                     onClick={() => handleToggle(product.id, product.is_active)}
                   >
-                    {product.is_active ? 'Disable' : 'Enable'}
+                    {product.is_active ? 'Desactivar' : 'Activar'}
                   </Button>
                 </div>
               </TableCell>

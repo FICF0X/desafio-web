@@ -10,34 +10,34 @@ import {
 
 const modules = [
   {
-    name: 'Login',
-    description: 'Authentication and session management',
+    name: 'Inicio de sesión',
+    description: 'Autenticación y gestión de sesión',
     status: 'done' as const,
   },
   {
     name: 'Productos',
-    description: 'Product catalog management',
+    description: 'Gestión del catálogo de productos',
     status: 'done' as const,
     href: '/products',
   },
   {
     name: 'Orden de Compra',
-    description: 'Purchase order creation and tracking',
+    description: 'Creación y seguimiento de órdenes de compra',
     status: 'soon' as const,
   },
   {
     name: 'Ingreso de Mercadería',
-    description: 'Goods receipt and inventory intake',
+    description: 'Recepción de mercadería e ingreso a inventario',
     status: 'soon' as const,
   },
   {
     name: 'Facturación',
-    description: 'Invoicing and billing',
+    description: 'Facturación y cobranza',
     status: 'soon' as const,
   },
   {
     name: 'Despacho',
-    description: 'Dispatch and shipment management',
+    description: 'Gestión de despachos y envíos',
     status: 'soon' as const,
   },
 ]
@@ -52,9 +52,9 @@ export default async function DashboardPage() {
     <main className="min-h-full bg-background p-8">
       <div className="mx-auto max-w-5xl">
         <div className="mb-10">
-          <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
+          <h1 className="text-3xl font-bold tracking-tight">Panel</h1>
           <p className="mt-2 text-muted-foreground">
-            Welcome back, <span className="font-medium">{user?.email}</span>
+            Bienvenido de nuevo, <span className="font-medium">{user?.email}</span>
           </p>
         </div>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -73,11 +73,11 @@ export default async function DashboardPage() {
                     <CardTitle className="text-base">{mod.name}</CardTitle>
                     {mod.status === 'done' ? (
                       <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-medium text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400">
-                        Done
+                        Listo
                       </span>
                     ) : (
                       <span className="rounded-full bg-muted px-2 py-0.5 text-xs font-medium text-muted-foreground">
-                        Coming soon
+                        Próximamente
                       </span>
                     )}
                   </div>

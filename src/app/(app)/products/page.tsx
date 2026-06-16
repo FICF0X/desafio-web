@@ -28,19 +28,19 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
       <div className="mx-auto max-w-5xl">
         <div className="mb-6 flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold tracking-tight">Products</h1>
+            <h1 className="text-3xl font-bold tracking-tight">Productos</h1>
             <p className="mt-1 text-muted-foreground">
-              Manage your product catalog.
+              Administra tu catálogo de productos.
             </p>
           </div>
           <div className="flex items-center gap-3">
             <Link href={toggleHref}>
               <Button variant="outline" size="sm">
-                {showInactive ? 'Show active only' : 'Show inactive'}
+                {showInactive ? 'Mostrar solo activos' : 'Mostrar inactivos'}
               </Button>
             </Link>
             <Link href="/products/new">
-              <Button>New product</Button>
+              <Button>Nuevo producto</Button>
             </Link>
           </div>
         </div>

@@ -33,11 +33,11 @@ export function ProductSearch({ defaultValue = '' }: ProductSearchProps) {
   return (
     <Input
       type="search"
-      placeholder="Search by name or SKU…"
+      placeholder="Buscar por nombre o SKU…"
       defaultValue={defaultValue}
       onChange={handleChange}
       className="max-w-sm"
-      aria-label="Search products"
+      aria-label="Buscar productos"
     />
   )
 }

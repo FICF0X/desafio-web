@@ -20,7 +20,7 @@ export default async function LoginPage() {
         <div className="text-center">
           <h1 className="text-2xl font-bold tracking-tight">Desafío Web</h1>
           <p className="mt-1 text-sm text-muted-foreground">
-            Business management system
+            Sistema de gestión comercial
           </p>
         </div>
         <LoginForm />
