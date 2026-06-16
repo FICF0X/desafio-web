@@ -60,7 +60,7 @@ export default async function DashboardPage() {
             <Card>
               <CardContent className="p-5">
                 <div className="flex items-center gap-3">
-                  <div className="rounded-lg bg-emerald-50 p-2">
+                  <div className="rounded-lg bg-emerald-500/10 p-2">
                     <TrendingUp className="h-5 w-5 text-emerald-600" />
                   </div>
                   <div className="min-w-0">
@@ -75,7 +75,7 @@ export default async function DashboardPage() {
             <Card>
               <CardContent className="p-5">
                 <div className="flex items-center gap-3">
-                  <div className="rounded-lg bg-blue-50 p-2">
+                  <div className="rounded-lg bg-blue-500/10 p-2">
                     <Receipt className="h-5 w-5 text-blue-600" />
                   </div>
                   <div className="min-w-0">
@@ -90,7 +90,7 @@ export default async function DashboardPage() {
             <Card>
               <CardContent className="p-5">
                 <div className="flex items-center gap-3">
-                  <div className="rounded-lg bg-amber-50 p-2">
+                  <div className="rounded-lg bg-amber-500/10 p-2">
                     <ShoppingCart className="h-5 w-5 text-amber-600" />
                   </div>
                   <div className="min-w-0">
@@ -105,7 +105,7 @@ export default async function DashboardPage() {
             <Card>
               <CardContent className="p-5">
                 <div className="flex items-center gap-3">
-                  <div className="rounded-lg bg-violet-50 p-2">
+                  <div className="rounded-lg bg-violet-500/10 p-2">
                     <Truck className="h-5 w-5 text-violet-600" />
                   </div>
                   <div className="min-w-0">
@@ -120,7 +120,7 @@ export default async function DashboardPage() {
             <Card>
               <CardContent className="p-5">
                 <div className="flex items-center gap-3">
-                  <div className="rounded-lg bg-sky-50 p-2">
+                  <div className="rounded-lg bg-sky-500/10 p-2">
                     <Package className="h-5 w-5 text-sky-600" />
                   </div>
                   <div className="min-w-0">
@@ -135,7 +135,7 @@ export default async function DashboardPage() {
             <Card>
               <CardContent className="p-5">
                 <div className="flex items-center gap-3">
-                  <div className="rounded-lg bg-indigo-50 p-2">
+                  <div className="rounded-lg bg-indigo-500/10 p-2">
                     <BarChart3 className="h-5 w-5 text-indigo-600" />
                   </div>
                   <div className="min-w-0">
@@ -153,7 +153,7 @@ export default async function DashboardPage() {
                   <div
                     className={
                       metrics.stockBajo > 0
-                        ? 'rounded-lg bg-red-50 p-2'
+                        ? 'rounded-lg bg-red-500/10 p-2'
                         : 'rounded-lg bg-muted p-2'
                     }
                   >
@@ -185,7 +185,7 @@ export default async function DashboardPage() {
             <Card>
               <CardContent className="p-5 space-y-3">
                 <div className="flex items-center gap-3">
-                  <div className="rounded-lg bg-teal-50 p-2">
+                  <div className="rounded-lg bg-teal-500/10 p-2">
                     <Users className="h-5 w-5 text-teal-600" />
                   </div>
                   <div className="min-w-0">
@@ -194,7 +194,7 @@ export default async function DashboardPage() {
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="rounded-lg bg-orange-50 p-2">
+                  <div className="rounded-lg bg-orange-500/10 p-2">
                     <Factory className="h-5 w-5 text-orange-600" />
                   </div>
                   <div className="min-w-0">

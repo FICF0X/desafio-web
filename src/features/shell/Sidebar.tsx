@@ -12,12 +12,14 @@ import {
   Factory,
   Users,
   LogOut,
+  Briefcase,
   type LucideIcon,
 } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { logout } from '@/features/auth/actions'
+import { ThemeToggle } from '@/components/theme-toggle'
 
 interface NavItem {
   label: string
@@ -94,19 +96,34 @@ export function Sidebar() {
         ))}
       </nav>
 
-      {/* Bottom: logout */}
-      <div className="border-t p-3">
-        <form action={logout}>
-          <Button
-            type="submit"
-            variant="ghost"
-            size="sm"
-            className="w-full justify-start gap-3 text-muted-foreground hover:text-foreground"
-          >
-            <LogOut className="h-4 w-4 shrink-0" />
-            Cerrar sesión
-          </Button>
-        </form>
+      {/* Bottom: portfolio + theme toggle + logout */}
+      <div className="border-t p-3 space-y-1">
+        {/* Portfolio link */}
+        <a
+          href="https://github.com/FICF0X/FICF0X"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-3 rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
+        >
+          <Briefcase className="h-4 w-4 shrink-0" />
+          <span>Mi portafolio</span>
+        </a>
+
+        {/* Theme toggle + logout row */}
+        <div className="flex items-center gap-1">
+          <ThemeToggle />
+          <form action={logout} className="flex-1">
+            <Button
+              type="submit"
+              variant="ghost"
+              size="sm"
+              className="w-full justify-start gap-3 text-muted-foreground hover:text-foreground"
+            >
+              <LogOut className="h-4 w-4 shrink-0" />
+              Cerrar sesión
+            </Button>
+          </form>
+        </div>
       </div>
     </aside>
   )

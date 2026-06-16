@@ -10,6 +10,7 @@
 
 import dynamic from 'next/dynamic'
 import { useEffect, useState } from 'react'
+import { useTheme } from 'next-themes'
 
 interface MedusaeProps {
   className?: string
@@ -22,17 +23,14 @@ const Medusae = dynamic<MedusaeProps>(
   { ssr: false },
 )
 
-const MEDUSAE_CONFIG = {
+const DARK_CONFIG = {
   background: { color: '#0a0a14' },
-  // Smaller, tighter jellyfish halo so the animation reads better.
   halo: {
     radiusBase: 1.5,
     radiusAmplitude: 0.35,
     rimWidth: 1.3,
   },
   particles: {
-    // colorBase is the resting color (away from the cursor). It must be
-    // clearly brighter than the background or the field is invisible.
     colorBase: '#3b4fd9',
     colorOne: '#4cc9f0',
     colorTwo: '#a855f7',
@@ -40,19 +38,41 @@ const MEDUSAE_CONFIG = {
   },
 }
 
+const LIGHT_CONFIG = {
+  background: { color: '#f1f5f9' },
+  halo: {
+    radiusBase: 1.5,
+    radiusAmplitude: 0.35,
+    rimWidth: 1.3,
+  },
+  particles: {
+    colorBase: '#94a3b8',
+    colorOne: '#2563eb',
+    colorTwo: '#7c3aed',
+    colorThree: '#0891b2',
+  },
+}
+
 export function LoginBackground() {
+  const { resolvedTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
   const [reducedMotion, setReducedMotion] = useState(false)
 
   useEffect(() => {
+    setMounted(true)
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
     setReducedMotion(mq.matches)
   }, [])
+
+  const isDark = !mounted || resolvedTheme === 'dark'
+  const config = isDark ? DARK_CONFIG : LIGHT_CONFIG
+  const bgColor = isDark ? '#0a0a14' : '#f1f5f9'
 
   if (reducedMotion) {
     return (
       <div
         className="fixed inset-0 z-0"
-        style={{ backgroundColor: '#0a0a14' }}
+        style={{ backgroundColor: bgColor }}
         aria-hidden="true"
       />
     )
@@ -60,7 +80,7 @@ export function LoginBackground() {
 
   return (
     <div className="fixed inset-0 z-0" aria-hidden="true">
-      <Medusae config={MEDUSAE_CONFIG} />
+      <Medusae config={config} />
     </div>
   )
 }
