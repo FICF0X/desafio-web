@@ -33,10 +33,19 @@ export default async function AppLayout({
     <div className="flex min-h-screen flex-col">
       <header className="border-b bg-card px-6 py-3">
         <div className="mx-auto flex max-w-5xl items-center justify-between">
-          <span className="text-sm font-medium text-foreground">
+          <Link
+            href="/"
+            className="text-sm font-semibold text-foreground transition-colors hover:text-primary"
+          >
             Desafío Web
-          </span>
+          </Link>
           <nav className="flex items-center gap-4">
+            <Link
+              href="/"
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Inicio
+            </Link>
             <Link
               href="/products"
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
