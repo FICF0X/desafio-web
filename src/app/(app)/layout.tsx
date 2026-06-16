@@ -70,6 +70,18 @@ export default async function AppLayout({
             >
               Ingreso de Mercadería
             </Link>
+            <Link
+              href="/customers"
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Clientes
+            </Link>
+            <Link
+              href="/invoices"
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Facturación
+            </Link>
           </nav>
           <div className="flex items-center gap-4">
             <span className="text-xs text-muted-foreground">{user.email}</span>

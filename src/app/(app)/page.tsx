@@ -35,7 +35,8 @@ const modules = [
   {
     name: 'Facturación',
     description: 'Facturación y cobranza',
-    status: 'soon' as const,
+    status: 'done' as const,
+    href: '/invoices',
   },
   {
     name: 'Despacho',
