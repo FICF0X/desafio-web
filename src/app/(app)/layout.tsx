@@ -1,9 +1,7 @@
-import Link from 'next/link'
 import { redirect } from 'next/navigation'
 
 import { createClient } from '@/lib/supabase/server'
-import { logout } from '@/features/auth/actions'
-import { Button } from '@/components/ui/button'
+import { Sidebar } from '@/features/shell/Sidebar'
 
 /**
  * Protected layout — Layer 2 auth guard (defense in depth).
@@ -30,76 +28,18 @@ export default async function AppLayout({
   }
 
   return (
-    <div className="flex min-h-screen flex-col">
-      <header className="border-b bg-card px-6 py-3">
-        <div className="mx-auto flex max-w-5xl items-center justify-between">
-          <Link
-            href="/"
-            className="text-sm font-semibold text-foreground transition-colors hover:text-primary"
-          >
-            Desafío Web
-          </Link>
-          <nav className="flex items-center gap-4">
-            <Link
-              href="/"
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Inicio
-            </Link>
-            <Link
-              href="/products"
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Productos
-            </Link>
-            <Link
-              href="/suppliers"
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Proveedores
-            </Link>
-            <Link
-              href="/purchase-orders"
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Órdenes de Compra
-            </Link>
-            <Link
-              href="/goods-receipts"
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Ingreso de Mercadería
-            </Link>
-            <Link
-              href="/customers"
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Clientes
-            </Link>
-            <Link
-              href="/invoices"
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Facturación
-            </Link>
-            <Link
-              href="/dispatches"
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Despacho
-            </Link>
-          </nav>
-          <div className="flex items-center gap-4">
-            <span className="text-xs text-muted-foreground">{user.email}</span>
-            <form action={logout}>
-              <Button type="submit" variant="ghost" size="sm">
-                Cerrar sesión
-              </Button>
-            </form>
-          </div>
-        </div>
-      </header>
-      <div className="flex-1">{children}</div>
+    <div className="flex h-screen overflow-hidden">
+      <Sidebar />
+      <div className="flex flex-1 flex-col overflow-hidden">
+        {/* Slim topbar */}
+        <header className="flex h-14 shrink-0 items-center border-b bg-card px-6">
+          <span className="text-sm text-muted-foreground">{user.email}</span>
+        </header>
+        {/* Scrollable content */}
+        <main className="flex-1 overflow-y-auto bg-background">
+          {children}
+        </main>
+      </div>
     </div>
   )
 }
